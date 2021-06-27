@@ -84,24 +84,24 @@ contract Staking is ERC20, Ownable {
         /**
          * @notice calculating number of months for which stake has been holded.
          */
-        uint256 months = uint256((block.number - startTime[_stakeholder])/161280);
+        uint256 months = (block.number - startTime[_stakeholder])/uint256(161280);
 
         uint256 apy;
 
         if(stakes[_stakeholder] < uint256(500)){
-          apy = uint256(8/100);
+          apy = 8/uint256(100);
         }
         else if (stakes[_stakeholder] >= uint256(500) && stakes[_stakeholder] < uint256(1000)){
-          apy = uint256(10/100);
+          apy = 10/uint256(100);
         }
         else if (stakes[_stakeholder] >= uint256(1000) && stakes[_stakeholder] < uint256(1500)){
-          apy = uint256(15/100);
+          apy = 15/uint256(100);
         }
         else if(stakes[_stakeholder] >= uint256(1500)){
-          apy = uint256(25/100);
+          apy = 25/uint256(100);
         }
 
-        reward = stakes[_stakeholder]*(apy/12)*months;
+        reward = stakes[_stakeholder]*(apy/uint256(12))*months;
         return reward;
     }
 
