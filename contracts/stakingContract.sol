@@ -43,6 +43,13 @@ contract StakingContract is ERC20, Ownable {
         _mint(msg.sender, _stake);
     }
 
+    function stakeOf(address _stakeholder)
+        public
+        view
+        returns(uint256)
+    {
+        return stakes[_stakeholder];
+    }
 
     function isStakeholder(address _address)
         public
@@ -114,6 +121,14 @@ contract StakingContract is ERC20, Ownable {
             uint256 reward = calculateReward(stakeholder);
             rewards[stakeholder] = rewards[stakeholder].add(reward);
         }
+    }
+
+    function rewardOf(address _stakeholder) 
+        public
+        view
+        returns(uint256)
+    {
+        return rewards[_stakeholder];
     }
 
     function withdrawReward() 
