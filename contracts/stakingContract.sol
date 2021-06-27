@@ -5,7 +5,7 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
-contract Staking is ERC20, Ownable {
+contract StakingContract is ERC20, Ownable {
     using SafeMath for uint256;
 
     address[] internal stakeholders;
